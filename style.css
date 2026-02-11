@@ -107,12 +107,13 @@ a{
         0% { transform: translateY(0) rotate(0deg); opacity: 0.9;}
         100% { transform: translateY(120vh) rotate(360deg); opacity: 0.3;}
     }
-.class1{
+.class1 {
     display: flex;
-    gap: 20px;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 600px;
-
+    justify-content: flex-start;  /* change from center */
+    padding: 50px 20px;           /* enough top/bottom padding */
+    min-height: 100vh;             /* ensures full screen but allows scroll */
+    box-sizing: border-box;
 }
+
