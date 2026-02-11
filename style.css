@@ -110,10 +110,10 @@ a{
 .class1 {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;  /* change from center */
-    padding: 50px 20px;           /* enough top/bottom padding */
-    min-height: 100vh;             /* ensures full screen but allows scroll */
+    height: 100vh;   /* full screen */
+    padding: 20px;
     box-sizing: border-box;
 }
 

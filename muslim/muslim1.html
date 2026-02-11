@@ -28,36 +28,41 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       
         </div>
     </header>
-
-
-<div class="container class1">
+<div class="class1">
   <h3>قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ</h3>
   <h2 class="fw-bolder display-5">قَدْ أَفْلَحَ مَنْ أَسْلَمَ</h2>
-  <p class="lead">:ترجمہ</p>
-  <p class="lead">:رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نے فرمایا</p>
+  <p class="lead">ترجمہ</p>
+  <p class="lead">رسول ﷺ نے فرمایا</p>
   <p class="lead text-center">تحقیق کامیاب ہوا وہ شخص جو اسلام لایا۔(صحیح مسلم)</p>
-
-  <button class="btn btn-warning btn-audio mt-3" onclick="playAudio()">
-      <i class="fa-solid fa-microphone"></i>
-  </button>
-
-  <div class="nav-buttons mt-4">
-      <a href="/muslim.html" onclick="scrollTop()" class="fw-bold text-success">⬅ واپس</a>
-      <a href="muslim2.html" class="fw-bold text-success">اگلی ➡</a>
-  </div>
 </div>
 
 
 
 
 <script>
-    function scrollToTop() {
-    
-        window.location.href = '/muslim.html';
+let touchstartX = 0;
+let touchendX = 0;
 
-        
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+const threshold = 50; // minimum distance to consider swipe
+
+document.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+}, false);
+
+document.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, false);
+
+function handleSwipe() {
+    if(touchendX < touchstartX - threshold){
+        // swipe left → next page
+        window.location.href = "muslim2.html"; // next hadis
     }
+    if(touchendX > touchstartX + threshold){
+        // swipe right → previous page
+        window.location.href = "muslim.html"; // previous hadis
+  
 
     let audio = new Audio("1mhadess.mpeg");
     let isPlaying = false;
