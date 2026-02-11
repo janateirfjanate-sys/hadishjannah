@@ -5,73 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 
+ <link rel="stylesheet" href="../style.css">
+ 
+ <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
    
-
-
-    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
-
+    
 <header>
   <div class=" container py-3">
 <h3 class="display-1 fw-bolder text-center ms-5">حديث الجنة </h3>
       
         </div>
     </header>
-
-    <div class="class1">
-
-
-
-        <h3>قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ</h3>
-            <h2 class="fw-bolder display-1">
- لَا تَسُبُّوا الدَّهْرَ
-            </h2>
-            <p class=" lead">:ترجمہ</p>
-            <p class="lead">:رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نے فرمایا</p>
-
-            <p class="lead text-center"> زمانے کو گالی نہ دو۔ (مسلم)</p>
+<div class="class1">
+  <h3>قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ</h3>
+  <h2 class="fw-bolder display-5">قَدْ أَفْلَحَ مَنْ أَسْلَمَ</h2>
+  <p class="lead">ترجمہ</p>
+  <p class="lead">رسول ﷺ نے فرمایا</p>
+  <p class="lead text-center">تحقیق کامیاب ہوا وہ شخص جو اسلام لایا۔(صحیح مسلم)</p>
+</div>
 
 
-            <button class="btn btn-warning" id="btn" onclick=" show()"><i class="fa-solid fa-microphone"></i></button>
-
-    </div>
 
 
-    <script>
-        let audio = new Audio("2mhadess.mpeg");
-        let isPlaying = false;
+<script>
+let touchstartX = 0;
+let touchendX = 0;
 
-        function show() {
-            if (!isPlaying) {
-                audio.play()
-                    .then(() => {
-                        console.log("Audio ON");
-                        isPlaying = true;
-                    })
-                    .catch((error) => console.error("Error playing audio:", error));
-            } else {
-                audio.pause();
-                audio.currentTime = 0;
-                console.log("Audio OFF");
-                isPlaying = false;
-            }
+const threshold = 50; // minimum distance to consider swipe
+
+document.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+}, false);
+
+document.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, false);
+
+function handleSwipe() {
+    if(touchendX < touchstartX - threshold){
+        // swipe left → next page
+        window.location.href = "muslim3.html"; // next hadis
+    }
+    if(touchendX > touchstartX + threshold){
+        // swipe right → previous page
+        window.location.href = "muslim1.html"; // previous hadis
+  
+    }}
+
+    let audio = new Audio("1mhadess.mpeg");
+    let isPlaying = false;
+
+    function show() {
+        if (!isPlaying) {
+            audio.play()
+                .then(() => { isPlaying = true; })
+                .catch((error) => console.error("Error playing audio:", error));
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+            isPlaying = false;
         }
+    }
+</script>
 
-
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
